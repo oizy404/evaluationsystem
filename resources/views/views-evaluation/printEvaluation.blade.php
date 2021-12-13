@@ -76,7 +76,7 @@
                 </div>
                 <div class="col mb-2 ml-5">
                     Date: <b>{{$evaluation->date}}</b><br>
-                    Course: <b>course</b><br>
+                    Course: <b>{{$evaluation->course}}</b><br>
                     School Year: <b>{{$evaluation->SY_from}}-{{$evaluation->SY_to}}</b>
                 </div>
             </div>           
