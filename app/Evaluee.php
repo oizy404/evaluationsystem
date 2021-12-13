@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Evaluee extends Model
 {
-    protected $table = 'comments';
+    protected $table= 'evaluees';
+   
 
-    public function student(){
-        return $this->beloangsTo("App\Models\Student");
+    public function evaluations(){
+        return $this->hasMany('App\Evaluation');
     }
 
     public function getDateFormat()

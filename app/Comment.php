@@ -10,7 +10,7 @@ class Comment extends Model
     protected $table = 'comments';
 
     public function student(){
-        return $this->beloangsTo("App\Models\Student");
+        return $this->beloangsTo("App\Student");
     }
 
     public function getDateFormat()

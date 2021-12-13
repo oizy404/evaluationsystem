@@ -10,14 +10,14 @@ class Category extends Model
     //protected $table = 'item_parts';
 
     public function tool(){
-        return $this->belongsTo("App\Models\Tool", "tool_id");
+        return $this->belongsTo("App\Tool", "tool_id");
     }
 
     public function items(){
-        return $this->hasMany("App\Models\ToolItem");
+        return $this->hasMany("App\ToolItem");
     }
     public function scores(){
-        return $this->hasMany("App\Models\ToolItem");
+        return $this->hasMany("App\ToolItem");
     }
 
     public function getDateFormat()

@@ -5,19 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Total extends Model
+class Criterion extends Model
 {
-    protected $table= 'total_scores';
+    protected $table = "criteria";
+    protected $fillable = ["tool_id", "item_id", "criterion", "points"];
 
-    public function evaluation(){
-        return $this->belongsTo("App\Models\Evaluation", "evaluation_id");
-    }
     public function item(){
-        return $this->belongsTo("App\Models\ToolItem", "item_id");
+        return $this->belongsTo("App\ToolItem");
     }
+  
 
     public function getDateFormat()
     {
         return 'Y-m-d H:i:s.u';
     }
+
+
+
+
+
+
 }

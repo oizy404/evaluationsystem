@@ -10,11 +10,11 @@ class ToolItem extends Model
     protected $table= 'tool_items';
 
     public function tool(){
-        return $this->belongsTo("App\Models\Tool", "tool_id");
+        return $this->belongsTo("App\Tool", "tool_id");
     }
 
     public function totalscores(){
-        return $this->hasMany("App\Models\Total");
+        return $this->hasMany("App\Total");
     }
     
     public function getDateFormat()

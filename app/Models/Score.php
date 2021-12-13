@@ -11,11 +11,11 @@ class Score extends Model
     protected $fillable = ['evaluation_id', 'tool_id', 'item_id', 'score', 'student_id' ];
 
     public function evaluation(){
-        return $this->belongsTo('App\Evaluation');
+        return $this->belongsTo('App\Models\Evaluation');
     }
 
     public function item(){
-        return $this->belongsTo('App\ToolItem','item_id');
+        return $this->belongsTo('App\Models\ToolItem','item_id');
     }
 
     public function getDateFormat()

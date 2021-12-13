@@ -11,7 +11,7 @@ class Criterion extends Model
     protected $fillable = ["tool_id", "item_id", "criterion", "points"];
 
     public function item(){
-        return $this->belongsTo("App\ToolItem");
+        return $this->belongsTo("App\Models\ToolItem");
     }
   
 
