@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Criterion extends Model
 {
     protected $table = "criteria";
-    protected $fillable = ["tool_id", "item_id", "criterion", "points"];
+    protected $fillable = ["criterion", "points"];
 
     public function item(){
-        return $this->belongsTo("App\Models\ToolItem");
+        return $this->belongsTo("App\Models\ToolItem", "tool_item_id");
     }
     public function tool(){
         return $this->belongsTo("App\Models\Tool", "tool_id");
