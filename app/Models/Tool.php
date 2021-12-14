@@ -18,6 +18,9 @@ class Tool extends Model
     public function items(){
         return $this->hasMany("App\Models\ToolItem");
     }
+    public function criterion(){
+        return $this->hasMany("App\Models\Criterion");
+    }
     
     public function categories(){
         return $this->hasMany("App\Models\Category");

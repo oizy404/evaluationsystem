@@ -12,6 +12,9 @@ class ToolItem extends Model
     public function tool(){
         return $this->belongsTo("App\Models\Tool", "tool_id");
     }
+    public function criterion(){
+        return $this->hasMany("App\Models\Criterion");
+    }
 
     public function totalscores(){
         return $this->hasMany("App\Models\Total");
