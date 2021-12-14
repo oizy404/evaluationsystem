@@ -13,7 +13,7 @@ class AdminEvaluationController extends Controller
         
         $evaluations = Evaluation::where('tool_id','=', 2)->where('archived', 0)->orderBy('id', 'desc')->get();
 
-        //return $evaluations;
+        // return $evaluations;
         return view('views-adminEval.adminEvaluation', compact("evaluations"));
     
     }

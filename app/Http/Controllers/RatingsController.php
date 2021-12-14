@@ -26,6 +26,11 @@ class RatingsController extends Controller
                 if($status === 0)
                     return redirect()->route('keyNotFound');
                 else
+                    foreach($evaluation as $eval){
+                        if($eval->tool_id==5){
+                            return view('views-student.ratingsNTP-page', compact('evaluation'));  
+                        }
+                    }
                     $request->session()->put('key', true);
                     return view('views-student.ratings-page', compact('evaluation'));
             }

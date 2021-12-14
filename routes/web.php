@@ -25,6 +25,10 @@ use App\Http\Controllers\ToolController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/dash', function () {
+    return view('defaultdashboard');
+})->name('dash');
+
 Route::get('/test', function () {
     $pword = "test";
     $hashed = Hash::make($pword);
@@ -85,11 +89,13 @@ Route::group(['middleware' => 'customAuthAdmin'], function() {
     Route::resource('supervisors', SupervisorController::class);
     Route::resource('evaluees', EvalueeController::class);
     Route::resource('BEDevaluees', BedController::class);
+    Route::resource('NTPevaluees', NTPController::class);
     Route::resource('teacherTools', ToolItemController::class);
     Route::resource('evaluations', EvaluationController::class);
     Route::post('/fetchEvaluations',[EvaluationController::class, 'fetch'])->name('fetchTeacher');
     Route::resource('adminevaluations', AdminEvaluationController::class);
     Route::resource('supervevaluations', SupervEvaluationController::class);
+    Route::resource('ntpevaluations', NTPEvaluationController::class);
 
     Route::get('/evaluee/new', function(){
         $passwordData = DB::table("defaultpass")->first();

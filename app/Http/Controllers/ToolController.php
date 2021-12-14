@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tool;
 use App\Models\ToolItem;
+use App\Models\Criterion;
 
 class ToolController extends Controller
 {
@@ -16,26 +17,51 @@ class ToolController extends Controller
     public function getItems($id){
         $tool =  Tool::find($id);
         $items = $tool->items;
-
+        if($tool->id== 5){
+            return view('admin.ntptoolItems')->with([
+                'items' => $items,
+                'id' => $id,
+                'header' => $tool->toolname
+                ]);
+        }
         return view('admin.toolItems')->with([
             'items' => $items,
             'id' => $id,
             'header' => $tool->toolname
-            ]);
+            ]);           
     }
 
     public function storeItem(Request $request){
-        // $item = new ToolItem;
-        // $item->statement = $request->statement;
-        // $item->tool_id = $request->toolId;
-        // $item->save();
 
-        $criteria = [];
-
-        for($i=0; $i<count($request->points);  $i++){
-            $criteria[$request->points] = $request->criterion;
+        if($request->toolId == 5){
+            $i=1;
+            foreach($request->statements as $statement){
+                $item = new ToolItem;
+                $item->tool_id = $request->toolId;
+                $item->statement = $statement;
+                $criterions="criterions".$i;
+                echo($item->statement);
+                $item->save();
+                $points=1;
+                foreach($request->$criterions as $criterion){
+                    $criteria=new Criterion;
+                    $criteria->tool_id=$request->toolId;
+                    $criteria->tool_item_id=$item->id;
+                    $criteria->criterion=$criterion;
+                    $criteria->points=$points;
+                    $criteria->save();
+                    echo($criterion);
+                    $points++;
+                }
+                $i++;
+            }
         }
-        return $criteria;
+        // $criteria = [];
+
+        // for($i=0; $i<count($request->points);  $i++){
+        //     $criteria[$request->points] = $request->criterion;
+        // }
+        // return $criteria;
      
     }
 
