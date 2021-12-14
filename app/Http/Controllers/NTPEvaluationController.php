@@ -11,7 +11,7 @@ class NTPEvaluationController extends Controller
     public function index()
     { 
         
-        $evaluations = Evaluation::where('tool_id','=', 4)->where('archived', 0)->orderBy('id', 'desc')->get();
+        $evaluations = Evaluation::where('tool_id','=', 5)->where('archived', 0)->orderBy('id', 'desc')->get();
 
         //return $evaluations;
         return view('views-ntpEval.ntpEvaluation', compact("evaluations"));

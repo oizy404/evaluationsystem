@@ -136,7 +136,19 @@
             <a class="info" href="{{route('evaluations.index')}}">Proceed</a>
             </div>
         </div>
-    </div>   
+    </div>
+    
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+        <div class="hovereffect" style="background-color: #4891ff">
+            <center>
+            <img class="img-responsive" src="{{asset('image/ntp.png')}}" alt="">
+            </center>
+            <div class="overlay">
+                <h2>Non-teaching Personnel<br>evaluation</h2>
+            <a class="info" href="{{route('ntpevaluations.index')}}">Proceed</a>
+            </div>
+        </div>
+    </div> 
 
   </div>
 
