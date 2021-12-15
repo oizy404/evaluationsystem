@@ -55,7 +55,23 @@ class ToolController extends Controller
                 }
                 $i++;
             }
+            return redirect()->back();
+        }else{
+            $item = new ToolItem;
+            $item->tool_id = $request->toolId;
+            $item->statement = $statement;
+            $item->save();
+
+            return redirect()->back();
+
+                // $criteria = [];
+
+                // for($i=0; $i<count($request->points);  $i++){
+                //     $criteria[$request->points] = $request->criterion;
+                // }
+                // return $criteria;
         }
+
         // $criteria = [];
 
         // for($i=0; $i<count($request->points);  $i++){

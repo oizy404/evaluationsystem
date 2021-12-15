@@ -39,11 +39,11 @@
             <table class="table">
             <thead>
                 <tr>
-                    <th>The teacher...</th>
-                    <th>4</th>
-                    <th>3</th>
-                    <th>2</th>
+                    <th>NTP...</th>
                     <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
                     <th>Clear</th>
                 </tr>
             </thead>
@@ -52,10 +52,10 @@
 
                 <tr>
                     <td class="col-md-4 statement pl-2">&nbsp;&nbsp;&nbsp;{{$item->statement}}</td>
-                    <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="4"></td>
-                    <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="3"></td>
-                    <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="2"></td>
                     <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="1"></td>
+                    <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="2"></td>
+                    <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="3"></td>
+                    <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="4"></td>
                     <td><a href="#" class="badge badge-danger"><i data-feather="minus" onClick="$('.score_{{$item->id}}').prop('checked', false)"></i></a></td>
                     {{-- <input type="hidden" name="item_{{$item->id}}" value="{{$item->id}}"> --}}
                 </tr>
