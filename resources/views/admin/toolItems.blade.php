@@ -133,9 +133,10 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success text-white" id="btn-complete">Complete</button>
+                <button type="button" class="btn btn-success text-white" id="btn-complete">Complete</button>
                 <button type="button" class="btn btn-secondary criteriaModal-close" data-dismiss="modal">Close</button>
             </div>
+         
         </div>
     </div>
     </div>

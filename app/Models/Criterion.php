@@ -13,6 +13,9 @@ class Criterion extends Model
     public function item(){
         return $this->belongsTo("App\Models\ToolItem");
     }
+    public function tool(){
+        return $this->belongsTo("App\Models\Tool", "tool_id");
+    }
   
 
     public function getDateFormat()

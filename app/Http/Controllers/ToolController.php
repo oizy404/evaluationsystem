@@ -55,23 +55,7 @@ class ToolController extends Controller
                 }
                 $i++;
             }
-            return redirect()->back();
-        }else{
-            $item = new ToolItem;
-            $item->tool_id = $request->toolId;
-            $item->statement = $statement;
-            $item->save();
-
-            return redirect()->back();
-
-                // $criteria = [];
-
-                // for($i=0; $i<count($request->points);  $i++){
-                //     $criteria[$request->points] = $request->criterion;
-                // }
-                // return $criteria;
         }
-<<<<<<< HEAD
         if($request->toolId != 5){
             $item = new ToolItem;
             $item->statement = $request->statement;
@@ -91,15 +75,6 @@ class ToolController extends Controller
             };
             return redirect()->back();
         }
-=======
-
-        // $criteria = [];
-
-        // for($i=0; $i<count($request->points);  $i++){
-        //     $criteria[$request->points] = $request->criterion;
-        // }
-        // return $criteria;
->>>>>>> b9db8b20f02ce9eb179f9c5094ef5d714beb1bb2
      
     }
 
