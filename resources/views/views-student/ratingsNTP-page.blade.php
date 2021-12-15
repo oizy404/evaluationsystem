@@ -48,6 +48,7 @@
                 </tr>
             </thead>
             <tbody>
+            <!-- gsd -->
             @foreach($eval->tool->items as $item)
                 @if($item->criterion->isNotEmpty())
                     <tr>
