@@ -30,6 +30,9 @@ class RatingsController extends Controller
                         if($eval->tool_id==5){
                             return view('views-student.ratingsNTP-page', compact('evaluation'));  
                         }
+                        elseif($eval->tool_id==4){
+                            return view('views-student.ratingsSupervisor-page', compact('evaluation'));
+                        }
                     }
                     $request->session()->put('key', true);
                     return view('views-student.ratings-page', compact('evaluation'));
