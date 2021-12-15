@@ -56,12 +56,25 @@ class ToolController extends Controller
                 $i++;
             }
         }
-        // $criteria = [];
-
-        // for($i=0; $i<count($request->points);  $i++){
-        //     $criteria[$request->points] = $request->criterion;
-        // }
-        // return $criteria;
+        if($request->toolId != 5){
+            $item = new ToolItem;
+            $item->statement = $request->statement;
+            $item->tool_id = $request->toolId;
+            $item->save();   
+            
+            $points=1;
+            foreach($request->criterion as $criterionn){
+                $criteria = Criterion::create([
+                    'criterion' => $criterionn,
+                    'points' => $points,
+                ]);
+                $criteria->tool_id=$request->toolId;
+                $criteria->tool_item_id=$item->id;
+                $criteria->save();
+                $points++;
+            };
+            return redirect()->back();
+        }
      
     }
 
