@@ -40,21 +40,22 @@ class ToolController extends Controller
                 $item->tool_id = $request->toolId;
                 $item->statement = $statement;
                 $criterions="criterions".$i;
-                echo($item->statement);
                 $item->save();
                 $points=1;
-                foreach($request->$criterions as $criterion){
-                    $criteria=new Criterion;
-                    $criteria->tool_id=$request->toolId;
-                    $criteria->tool_item_id=$item->id;
-                    $criteria->criterion=$criterion;
-                    $criteria->points=$points;
-                    $criteria->save();
-                    echo($criterion);
-                    $points++;
+                if($request->$criterions!=null){
+                    foreach($request->$criterions as $criterion){
+                        $criteria=new Criterion;
+                        $criteria->tool_id=$request->toolId;
+                        $criteria->tool_item_id=$item->id;
+                        $criteria->criterion=$criterion;
+                        $criteria->points=$points;
+                        $criteria->save();
+                        $points++;
+                    }
+                    $i++; 
                 }
-                $i++;
             }
+            return redirect()->back();
         }
         if($request->toolId != 5){
             $item = new ToolItem;

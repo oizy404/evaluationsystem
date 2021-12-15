@@ -20,11 +20,16 @@
         body{
             background: #f7f7f7;
         }
-        .add-criteria{
+        /* .add-criteria{
             position: absolute;
             top: 100px;
             left: 10px;
-        }
+        } */
+        /* .add-statement{
+            position: absolute;
+            top: 100px;
+            left: 10px;
+        } */
         .center {
             padding-left: auto;
             padding-right: auto;
@@ -84,24 +89,29 @@
 
         </div>
         <div class="col-md-4">
-        <a href="#" class="add-criteria1" data-toggle="tooltip" data-placement="top" title="Setup rubrics" >
-                    <span data-feather="plus-circle"></span>
-                </a> 
+        <a href="#" class="btn btn-warning mt-3 add-criteria1" data-toggle="tooltip"  style="margin-left:100px;font-size:20px" data-placement="top" title="Setup rubrics" >
+                    Create table
+        </a>
         <form method="post" id="add_item" action="{{url('storeItem')}}" >
             @method('post')
             @csrf
             <div class="form-group ml-4 mb-5" style="position:relative">
                 <label for="statement"><b>Create Item</b></label>
-                <textarea name="statement" id="statement" style="width:400px; height:100px; resize:none; padding-left:0px" class="form-control mb-2">
+                <div class="form-group ml-4 mb-5 box" style="position:relative">
+                <textarea name="statements[]" id="statement" style="width:400px; height:100px; resize:none; padding-left:0px" class="form-control mb-2">
                 </textarea>
-                <a href="#" class="add-criteria" data-toggle="tooltip" data-placement="top" title="Setup rubrics" >
+                </div>
+                <a href="#" class="add-statement" data-toggle="tooltip" data-placement="top" title="Setup rubrics" >
                     <span data-feather="plus-circle"></span>
                 </a>
-                
+                <!-- <a href="#" class="add-criteria" data-toggle="tooltip" data-placement="top" title="Setup rubrics" >
+                    <span data-feather="plus-circle"></span>
+                </a>
+               -->
                 <ul id="view-criteria" class="card card-body"></ul>
               
                 <input type="hidden" name="toolId" value="{{$id}}">
-                <input type="submit" class="btn btn-primary mt-3" id="add" value="Create Item">
+                <button type="submit" class="btn btn-primary mt-3" id="add">Create Item</button>
                
             </div>
             <div class="status col-md-8">
@@ -249,6 +259,13 @@
          })
 
          //--------------miguelles
+         $(".add-statement").click(function(){
+            let box=$(".box");
+            box.append(
+            "<textarea name='statements[]' id='statement' style='width:400px; height:100px; resize:none; padding-left:0px' class='form-control mb-2'></textarea>"
+            );
+         })
+
          $(".add-criteria1").click(function(){
             $("#criteriaModal1").fadeIn(300);
          })
