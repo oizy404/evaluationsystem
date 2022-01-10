@@ -208,7 +208,7 @@
 
             </div>
             <div class="modal-footer">
-                <!-- <button type="submit" class="btn btn-success text-white" id="btn-complete1">Complete</button> -->
+                <button type="submit" class="btn btn-success text-white" id="btn-complete1" style="display:none;">Complete</button>
                 <a class="btn btn-info ml-3" id="generate-table1">Complete</a>
                 <button type="button" class="btn btn-secondary criteriaModal-close1" data-dismiss="modal">Close</button>
             </div>
@@ -303,6 +303,8 @@
             generateTable1(n,x);
             $("#rubrics-table").show(300);
             $("#rubrics-table1").show(300);
+            $("#btn-complete1").show(300);
+            $("#generate-table1").hide(300);
          })
 
          function generateTable1(n,x){
