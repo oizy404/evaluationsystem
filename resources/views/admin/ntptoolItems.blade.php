@@ -44,6 +44,17 @@
             list-style: none;
             display: none;
         }
+        #add{
+            float: right;
+            margin-right: 65px;
+        }
+        #rubrics-table{
+            position: relative;
+            overflow-y:scroll;
+            height: 400px;
+            padding:20px;
+            display: none;
+        }
 
     </style>
 @stop
@@ -88,22 +99,26 @@
             </div>
 
         </div>
-        <div class="col-md-4">
-        <a href="#" class="btn btn-warning mt-3 add-criteria1" data-toggle="tooltip"  style="margin-left:100px;font-size:20px" data-placement="top" title="Setup rubrics" >
-                    Create table
-        </a>
+        <div class="col-md-5">
+            <a href="#" class="btn btn-primary mb-3 add-criteria1" data-toggle="tooltip"  style="margin-left:50px;font-size:17px" data-placement="top" title="Setup rubrics" >
+                        Create Table
+            </a>
         <form method="post" id="add_item" action="{{url('storeItem')}}" >
             @method('post')
             @csrf
             <div class="form-group ml-4 mb-5" style="position:relative">
-                <label for="statement"><b>Create Item</b></label>
-                <div class="form-group ml-4 mb-5 box" style="position:relative">
-                <textarea name="statements[]" id="statement" style="width:400px; height:100px; resize:none; padding-left:0px" class="form-control mb-2">
-                </textarea>
-                </div>
-                <a href="#" class="add-statement" data-toggle="tooltip" data-placement="top" title="Setup rubrics" >
+                <!-- <label for="statement"><b>Create Item</b></label> -->
+                <div class="form-group ml-4 mb-5 box" style="position:relative;">
+                <a href="#" class="add-statement" data-toggle="tooltip" data-placement="top" title="Setup rubrics">
                     <span data-feather="plus-circle"></span>
+                    Add another item
                 </a>
+                    <textarea name="statements[]" id="statement" style="width:400px; height:100px; resize:none; padding-left:0px" class="form-control mt-2 mb-2" placeholder="  Create Item"></textarea>
+                </div>
+                <!-- <a href="#" class="add-statement" data-toggle="tooltip" data-placement="top" title="Setup rubrics">
+                    <span data-feather="plus-circle"></span>
+                    Add another item
+                </a><br> -->
                 <!-- <a href="#" class="add-criteria" data-toggle="tooltip" data-placement="top" title="Setup rubrics" >
                     <span data-feather="plus-circle"></span>
                 </a>
@@ -121,7 +136,7 @@
         </div>   
     </div>
     <!-- Setup Rubrics modal -->
-    <div class="modal" tabindex="-1" role="dialog" id="criteriaModal">
+    <!-- <div class="modal" tabindex="-1" role="dialog" id="criteriaModal">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
 
@@ -152,7 +167,7 @@
          
         </div>
     </div>
-    </div>
+    </div> -->
 
         <!-- Setup Rubrics modal rawr -->
     <div class="modal" tabindex="-1" role="dialog" id="criteriaModal1">
@@ -176,18 +191,25 @@
                             <input type="number" id="noOfRows1" class="form-control" style="width:350px" placeholder="Enter maximum number of criteria points"><br>
                             <input type="number" id="noOfColumns1" class="form-control" style="width:350px" placeholder="Enter maximum number of items">
                         </div>
-                        <a class="btn btn-info ml-3" id="generate-table1">Generate Table</a>
+                        <!-- <a class="btn btn-info ml-3" id="generate-table1">Generate Table</a> -->
 
                     </div>
                 </div>
-                <table class="rawrtable" id="rubrics-table1" style="display:none; width:100%" >
-                <tr id="points1"></tr>
+                <div class="form-group" id="rubrics-table">
+                    <table class="rubric-stable" id="rubrics-table1" style="display:none; width:100%;" >
+                        <tr id="points1"></tr>
+                        <tr id="criterion1"></tr>
+                    </table>
+                </div>
+                <!-- <table class="rawrtable" id="rubrics-table1" style="display:none; width:100%;" >
+                    <tr id="points1"></tr>
                     <tr id="criterion1"></tr>
-                </table>
+                </table> -->
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success text-white" id="btn-complete1">Complete</button>
+                <!-- <button type="submit" class="btn btn-success text-white" id="btn-complete1">Complete</button> -->
+                <a class="btn btn-info ml-3" id="generate-table1">Complete</a>
                 <button type="button" class="btn btn-secondary criteriaModal-close1" data-dismiss="modal">Close</button>
             </div>
             </form>
@@ -279,6 +301,7 @@
             let x = parseInt($("#noOfRows1").val())
             $(".rawr").hide(200);
             generateTable1(n,x);
+            $("#rubrics-table").show(300);
             $("#rubrics-table1").show(300);
          })
 
