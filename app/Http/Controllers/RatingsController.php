@@ -28,7 +28,7 @@ class RatingsController extends Controller
                 else
                     foreach($evaluation as $eval){
                         if($eval->tool_id==5){
-                            return view('views-student.ratingsNTP-page', compact('evaluation'));  
+                            return view('views-ntpEval.ratingsNTP-page', compact('evaluation'));  
                         }
                         elseif($eval->tool_id==4){
                             return view('views-student.ratingsSupervisor-page', compact('evaluation'));
