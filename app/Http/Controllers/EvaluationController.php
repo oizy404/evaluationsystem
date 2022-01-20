@@ -11,7 +11,7 @@ class EvaluationController extends Controller
     public function index()
     { 
         
-        $evaluations = Evaluation::where('tool_id','=', 1)->where('archived', 0)->orderBy('id', 'desc')->get();
+        $evaluations = Evaluation::where('tool_id','=', 1)->orWhere('tool_id','=', 2)->where('archived', 0)->orderBy('id', 'desc')->get();
  
         //return $evaluations;
         return view('views-evaluation.teacherEvaluation', compact("evaluations"));

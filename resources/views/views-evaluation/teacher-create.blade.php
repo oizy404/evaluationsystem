@@ -13,7 +13,7 @@
           @method('post')
           @csrf
           <input type="hidden" name="evaluee_id" id="evaluee_id" value="">
-          <input type="hidden" name="tool_id" value="1">
+          <input type="hidden" name="tool_id" id="tool_id" value="">
           
             <div class="form-group form-inline">
                 <label class="font-weight-bold float-left">Teacher:</label>
@@ -100,7 +100,7 @@
             </thead>
             <tbody>
                 @foreach ($evaluees as $evaluee)
-                <tr class="theData">
+                <tr class="rawr">
                     <td style="display: none">{{$evaluee->id}}</td>
                     <td>{{$evaluee->lname}}, {{$evaluee->fname}}</td>
                     <td>{{$evaluee->office}}</td>
@@ -120,22 +120,27 @@
 <script>
 $(document).ready(function() {
    $('#evalueeTable').dataTable(); 
-
-    $('.theData').click(function(){
+  });   
+   $('.rawr').click(function(){
       var id =  $(this).find(":first-child").text();
       var name = $(this).find(":first-child").next().text();
+      var office=$(this).find(":first-child").next().next().text();
       $('#tableModal').modal('hide');
       $('#teacher-input').val(name);
       $('#evaluee_id').val(id);
+      if(office=="College"){
+        $('#tool_id').val(1);
+      }else{
+        $('#tool_id').val(2);
+      }
+    }); 
 
-    });
-    
     $(function() {
         $(".yrpicker").datepicker({dateFormat: 'yy'});
     });
     
     $('.page-link').addClass('shadow');
 
-});    
+   
 </script>
 @stop
