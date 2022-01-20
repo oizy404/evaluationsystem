@@ -49,40 +49,38 @@
     <div class="col-md-9 offset-md-2">
         <p class="mt-4 ml-2 badge badge-info text-wrap" style="font-size: 0.8em"><span class="mr-5">4 - Always</span><span class="mr-5">3 - Often</span><span class="mr-5">2 - Sometimes</span><span class="mr-5">1 - Never</span><span >0 - No Opportunity to Observe</span></p>
     
-    <form action="{{route('submit-scoresAdmin')}}" method="post">
+    <form action="{{route('submit-scores')}}" method="post">
         <div class="card shadow mb-5" style="width: 100%;">
         <div class="card-body ml-4 mr-4">
            
 
-            <p><b>The Administrator...</b></p>
-            <ul class="category-list">
-            @foreach($eval->tool->categories as $category)
-                <li>
-                    <h4>{{$category->category}}</h4>
-                    <div>
-                        <input type="hidden" name="category_id" value="{{$category->id}}">
-                        <table class="table table-sm">
-                            <?php $i=1; ?>
-                            @foreach($category->items as $item)
-                            <tr style="margin-bottom:5px">
-                                <td>{{$i}}.</td>
-                                <td class="item-statement">
-                                     {{$item->statement}}
-                                </td>
-                                <td>
-                                    <input type="number" name="ratings[]" class="form-control" max="4" min="0" value="0">
-                                    <input type="hidden" name="item_ids[]" value="{{$item->id}}">
-                                </td>
-                            </tr>
-                            
-                                <?php $i++; ?>
-                            @endforeach
-                            
-                        </table>
-                    </div>
-                </li>
-            @endforeach
-            </ul>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>The Administrator...</th>
+                        <th>4</th>
+                        <th>3</th>
+                        <th>2</th>
+                        <th>1</th>
+                        <th>Clear</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($eval->tool->items as $item)
+
+                    <tr>
+                        <td class="col-md-4 statement pl-2">&nbsp;&nbsp;&nbsp;{{$item->statement}}</td>
+                        <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="4"></td>
+                        <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="3"></td>
+                        <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="2"></td>
+                        <td><input type="radio" name="{{$item->id}}" class="score_{{$item->id}}" value="1"></td>
+                        <td><a href="#" class="badge badge-danger"><i data-feather="minus" onClick="$('.score_{{$item->id}}').prop('checked', false)"></i></a></td>
+                        {{-- <input type="hidden" name="item_{{$item->id}}" value="{{$item->id}}"> --}}
+                    </tr>
+                    
+                @endforeach
+                </tbody>
+            </table>
 
 
             <div class="form-group">

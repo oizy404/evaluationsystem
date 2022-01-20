@@ -11,7 +11,7 @@ class AdminEvaluationController extends Controller
     public function index()
     { 
         
-        $evaluations = Evaluation::where('tool_id','=', 2)->where('archived', 0)->orderBy('id', 'desc')->get();
+        $evaluations = Evaluation::where('tool_id','=', 3)->where('archived', 0)->orderBy('id', 'desc')->get();
 
         // return $evaluations;
         return view('views-adminEval.adminEvaluation', compact("evaluations"));
@@ -39,7 +39,7 @@ class AdminEvaluationController extends Controller
         $evaluation->semester = 0;
         $evaluation->term = 0;
         $evaluation->status = 0;
-        $evaluation->type = $request->type;
+        // $evaluation->type = $request->type;
 
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
         $key = substr(str_shuffle($permitted_chars), 0, 6);
