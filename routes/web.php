@@ -131,6 +131,11 @@ Route::group(['middleware' => ['customAuthTeacher']], function () {
 Route::get('/student/access-key/', function(){
     return view('views-student.access-key');
 })->name('access-key');
+
+Route::get('/employee/access-key/', function(){
+    return view('views-employee.dashboard');
+})->name('access-dashboard');
+
 Route::post('student/page/', [RatingsController::class, 'access'])->name('access-page');
 
 //Route::group(['middleware' => ['customAuthStudent']], function () {

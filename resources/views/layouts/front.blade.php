@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{asset('css/front-style.css')}}">
     <title>ACD Performance Evaluation</title>
     <link rel="icon" href="{{asset('image/acdseal.png')}}" type="image/x-icon"> 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body >
   <div class="container">
@@ -18,9 +20,17 @@
     </div>
     <div class="content pt-1">
       <h1 class="mb-4">Performance Evaluation System</h1>
-      <a href="#" class="btn btn-warning btn-login font-weight-bold" id="hr-login">Sign In as HR</a>
-      {{-- <a href="#" class="btn btn-login font-weight-bold" style="background: #329ef8" id="teacher-login">Sign In as Teacher</a> --}}
-      <a href="{{route('access-key')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Evaluator</a>
+      <div class="front-buttons">
+        <a href="#" class="btn btn-warning btn-login font-weight-bold rounded-pill" id="hr-login">Sign In as HR</a>
+        <button class="btn dropdown-toggle m-3 font-weight-bold rounded-pill" style="background: #ffff; width: 30%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Evaluator
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li> <a href="{{route('access-key')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Student</a></li>
+          <li><a href="{{route('access-dashboard')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Employee</a></li>
+        </ul>
+        <!-- {{-- <a href="#" class="btn btn-login font-weight-bold" style="background: #329ef8" id="teacher-login">Sign In as Teacher</a> --}} -->
+      </div>
     </div>
 
     <div class="card hrlogin bg-warning shadow-lg" style="display: none">
@@ -86,5 +96,7 @@
     <script src="{{asset('js/bootstrap.bundle.min.js')}}" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
     <script src="{{asset('js/feather.min.js')}}"></script>
     <script src="{{asset('js/front.js')}}"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
