@@ -6,7 +6,7 @@
 
 
    
-   <div class="mt-5">
+   <div class="mt-5 dashboard">
         <center>
         <h1>Welcome!</h1>
         <img src="{{asset('image/check2.gif')}}" style="width: 30%; height: 30%">
@@ -16,15 +16,16 @@
     </div>
 
     <div class="container">
-        <div class="col-md-8 offset-md-2 administrator-container">
+        <div class="col-md-8 offset-md-2 mt-5 administrator-container" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                    <table>
+                    <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
                         <thead>
                             <tr>
-                                <th>name</th>
-                                <th>lastname</th>
-                                <th>office</th>
+                                <th style="display:none;">Name</th>
+                                <th class="bg-info text-dark">Name</th>
+                                <th class="bg-info text-dark">Last Name</th>
+                                <th class="bg-info text-dark">Office</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,24 +40,20 @@
                             @endif
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 offset-md-2 supervisor-container">
+        <div class="col-md-8 offset-md-2 mt-5 supervisor-container" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                <table>
+                <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
                         <thead>
                             <tr>
-                                <th>name</th>
-                                <th>lastname</th>
-                                <th>office</th>
+                                <th style="display:none;">Name</th>
+                                <th class="bg-info text-dark">Name</th>
+                                <th class="bg-info text-dark">Last Name</th>
+                                <th class="bg-info text-dark">Office</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,15 +77,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 offset-md-2 ntp-container">
+        <div class="col-md-8 offset-md-2 mt-5 ntp-container" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                <table>
+                <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
                         <thead>
                             <tr>
-                                <th>name</th>
-                                <th>lastname</th>
-                                <th>office</th>
+                                <th style="display:none;">Name</th>
+                                <th class="bg-info text-dark">Name</th>
+                                <th class="bg-info text-dark">Last Name</th>
+                                <th class="bg-info text-dark">Office</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -103,21 +101,47 @@
                             @endif
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $('.data').click(function(){
+            var code=$(this).find(":first-child").text();
+            window.location.replace(code);
+        });
+    </script>
+@stop
+@section('scripts')    
+<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
 <script>
-    $('.data').click(function(){
-        var code=$(this).find(":first-child").text();
-        window.location.replace(code);
-    })
+    
+    // $('#employeeTable').dataTable(); 
+    $(document).ready(function(){
+        $('.employeeTable').dataTable(); 
+    });
+        
+        $('#administrators').click(function(){
+            $('.administrator-container').fadeIn(300);
+            $('.supervisor-container').fadeOut(300);
+            $('.ntp-container').fadeOut(300);
+            $('.dashboard').fadeOut(300);
+        });
+        $('#supervisors').click(function(){
+            $('.supervisor-container').fadeIn(300);
+            $('.administrator-container').fadeOut(300);
+            $('.ntp-container').fadeOut(300);
+            $('.dashboard').fadeOut(300);
+        });
+        $('#ntp').click(function(){
+            $('.ntp-container').fadeIn(300);
+            $('.supervisor-container').fadeOut(300);
+            $('.administrator-container').fadeOut(300);
+            $('.dashboard').fadeOut(300);
+        })
 </script>
 @stop
+
