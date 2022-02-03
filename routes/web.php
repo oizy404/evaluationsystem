@@ -15,6 +15,7 @@ use App\Http\Controllers\RatingsController;
 use App\Http\Controllers\SupervEvaluationController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\ToolController;
+use App\Http\Controllers\EmployeeEvaluationController;
 /*
 |-------------------------------------------------------------------------
 | Web Routes
@@ -132,9 +133,8 @@ Route::get('/student/access-key/', function(){
     return view('views-student.access-key');
 })->name('access-key');
 
-Route::get('/employee/access-key/', function(){
-    return view('views-employee.dashboard');
-})->name('access-dashboard');
+Route::get('employee/dashboard', [EmployeeEvaluationController::class, 'index'])->name('access-dashboard');
+Route::get('employee/{key}', [EmployeeEvaluationController::class, 'access'])->name('employee-access-key');
 
 Route::post('student/page/', [RatingsController::class, 'access'])->name('access-page');
 

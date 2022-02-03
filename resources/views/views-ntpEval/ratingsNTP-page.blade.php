@@ -29,10 +29,9 @@
 @section('content') 
 
 @isset($evaluation)
-    @foreach ($evaluation as $eval)
     <div class="container">
     <div class="header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-        <h1 class="h5">Evaluation for Mr/Ms <span class="text-success">{{$eval->evaluee->lname}}, {{$eval->evaluee->fname}}</span></h1>
+        <h1 class="h5">Evaluation for Mr/Ms <span class="text-success">{{$evaluation->evaluee->lname}}, {{$evaluation->evaluee->fname}}</span></h1>
     </div>
     <div class="row">
     <div class="col-md-9 offset-md-2">
@@ -55,7 +54,7 @@
             </thead>
             <tbody>
             <!-- gsd -->
-            @foreach($eval->tool->items as $item)
+            @foreach($evaluation->tool->items as $item)
 
                 @if($item->criterion->isNotEmpty())
                     <tr>
@@ -151,8 +150,8 @@
 
         @method('post')
         @csrf
-        <input type="hidden" name="evaluation_id" value="{{$eval->id}}">
-        <input type="hidden" name="tool_id" value="{{$eval->tool_id}}">
+        <input type="hidden" name="evaluation_id" value="{{$evaluation->id}}">
+        <input type="hidden" name="tool_id" value="{{$evaluation->tool_id}}">
 
         </form>
     </div>
@@ -161,8 +160,6 @@
 
     </div>
 
-
-    @endforeach
 @endisset
 
 
