@@ -129,9 +129,12 @@ Route::group(['middleware' => ['customAuthTeacher']], function () {
 
 
 //================students' page===============//
-Route::get('/student/access-key/', function(){
-    return view('views-student.access-key');
-})->name('access-key');
+// Route::get('/student/access-key/', function(){
+//     return view('views-student.access-key');
+// })->name('access-key');
+Route::get('/student-dashboard', function(){
+    return view('views-student.dashboard');
+})->name('access-student-dashboard');
 
 Route::get('employee/dashboard', [EmployeeEvaluationController::class, 'index'])->name('access-dashboard');
 Route::get('employee/{key}', [EmployeeEvaluationController::class, 'access'])->name('employee-access-key');
