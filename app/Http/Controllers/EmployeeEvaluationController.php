@@ -8,7 +8,7 @@ use App\Models\Evaluation;
 class EmployeeEvaluationController extends Controller
 {
     public function index(){
-        $evaluations = Evaluation::where('status',1)->get();
+        $evaluations = Evaluation::all();
 
         return view('views-employee.dashboard')->with('evaluations', $evaluations);
     }
@@ -18,9 +18,8 @@ class EmployeeEvaluationController extends Controller
         try{
             $evaluation = Evaluation::where('access_key',$key)->first();
 
-            if($evaluation->status == 0){
+            if($evaluation->status === 0)
                 return redirect()->route('keyNotFound');
-            }
             else
                 if($evaluation->tool_id==5){
                     return view('views-ntpEval.ratingsNTP-page')->with('evaluation', $evaluation);  
