@@ -19,14 +19,16 @@
         <div class="col-md-8 offset-md-2 administrator-container">
             <div class="card">
                 <div class="card-body">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>name</th>
-                                <th>lastname</th>
-                                <th>office</th>
-                            </tr>
-                        </thead>
+                <table class="table table-hover table-bordered evalueeTable" style="width:100%" id="evalueeTable">
+                    <thead>
+                        <tr>
+                            <th style="display:none">ID</th>
+                            <th class="">Name</th>
+                            <th class="">Lastname</th>
+                            <th class="">Position</th>
+                        </tr>
+                    </thead>
+ 
                         <tbody>
                             @foreach($evaluations as $evaluation)
                             @if($evaluation->tool_id==3)
@@ -51,14 +53,16 @@
         <div class="col-md-8 offset-md-2 supervisor-container">
             <div class="card">
                 <div class="card-body">
-                <table>
-                        <thead>
-                            <tr>
-                                <th>name</th>
-                                <th>lastname</th>
-                                <th>office</th>
-                            </tr>
-                        </thead>
+                <table class="table table-hover table-bordered evalueeTable" style="width:100%" id="evalueeTable">
+                    <thead>
+                        <tr>
+                            <th style="display:none">ID</th>
+                            <th class="">Name</th>
+                            <th class="">Lastname</th>
+                            <th class="">Position</th>
+                        </tr>
+                    </thead>
+ 
                         <tbody>
                             @foreach($evaluations as $evaluation)
                             @if($evaluation->tool_id==4)
@@ -76,21 +80,23 @@
                                 <th></th>
                             </tr>
                         </tfoot>
-                    </table>         
+                    </table>     
                 </div>
             </div>
         </div>
         <div class="col-md-8 offset-md-2 ntp-container">
             <div class="card">
                 <div class="card-body">
-                <table>
-                        <thead>
-                            <tr>
-                                <th>name</th>
-                                <th>lastname</th>
-                                <th>office</th>
-                            </tr>
-                        </thead>
+                <table class="table table-hover table-bordered evalueeTable" style="width:100%" id="evalueeTable">
+                    <thead>
+                        <tr>
+                            <th style="display:none">ID</th>
+                            <th class="">Name</th>
+                            <th class="">Lastname</th>
+                            <th class="">Position</th>
+                        </tr>
+                    </thead>
+ 
                         <tbody>
                             @foreach($evaluations as $evaluation)
                             @if($evaluation->tool_id==5)
@@ -119,5 +125,15 @@
         var code=$(this).find(":first-child").text();
         window.location.replace(code);
     })
+</script>
+@stop
+@section('scripts')
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
+<script>
+$(document).ready(function() {
+   $('.evalueeTable').dataTable(); 
+
+});    
 </script>
 @stop
