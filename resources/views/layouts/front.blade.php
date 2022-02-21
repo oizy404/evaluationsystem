@@ -26,7 +26,7 @@
           Evaluator
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li> <a href="{{route('access-key')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Student</a></li>
+          <li> <a href="{{route('access-student-dashboard')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Student</a></li>
           <li><a href="{{route('access-dashboard')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Employee</a></li>
         </ul>
         <!-- {{-- <a href="#" class="btn btn-login font-weight-bold" style="background: #329ef8" id="teacher-login">Sign In as Teacher</a> --}} -->
