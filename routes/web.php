@@ -16,6 +16,7 @@ use App\Http\Controllers\SupervEvaluationController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\EmployeeEvaluationController;
+use App\Http\Controllers\TeacherController;
 /*
 |-------------------------------------------------------------------------
 | Web Routes
@@ -132,9 +133,8 @@ Route::group(['middleware' => ['customAuthTeacher']], function () {
 // Route::get('/student/access-key/', function(){
 //     return view('views-student.access-key');
 // })->name('access-key');
-Route::get('/access-student-dashboard', function(){
-    return view('views-student.student-dashboard');
-})->name('access-student-dashboard');
+Route::get('/access-student-dashboard', [TeacherController::class, 'index'])->name('access-student-dashboard');
+Route::get('student/{key}', [TeacherController::class, 'access'])->name('student-access-key');
 
 Route::get('employee/dashboard', [EmployeeEvaluationController::class, 'index'])->name('access-dashboard');
 Route::get('employee/{key}', [EmployeeEvaluationController::class, 'access'])->name('employee-access-key');

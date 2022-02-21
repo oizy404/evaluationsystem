@@ -16,92 +16,113 @@
     </div>
 
     <div class="container">
-        <div class="col-md-8 offset-md-2 mt-5 administrator-container" style="display:none;">
-            <div class="card">
-                <div class="card-body">
+        <div class="administrator-container" style="display:none;">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h5">Administrators</h1>
+                
+                <a href="#" id="note-link"><i data-feather="info"></i></a>
+            </div>
+            <div class="col-md-10 offset-md-1 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
+                            <thead>
+                                <tr>
+                                    <th style="display:none;">Name</th>
+                                    <th class="bg-info text-dark">Name</th>
+                                    <th class="bg-info text-dark">Last Name</th>
+                                    <th class="bg-info text-dark">Office</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($evaluations as $evaluation)
+                                @if($evaluation->tool_id==3)
+                                    <tr class="data">
+                                        <td style="display:none">{{$evaluation->access_key}}</td>
+                                        <td>{{$evaluation->evaluee->fname}}</td>
+                                        <td>{{$evaluation->evaluee->lname}}</td>
+                                        <td>{{$evaluation->evaluee->office}}</td>
+                                    </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="supervisor-container" style="display:none;">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h5">Supervisors</h1>
+                
+                <a href="#" id="note-link"><i data-feather="info"></i></a>
+            </div>
+            <div class="col-md-10 offset-md-1 mt-5">
+                <div class="card">
+                    <div class="card-body">
                     <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
-                        <thead>
-                            <tr>
-                                <th style="display:none;">Name</th>
-                                <th class="bg-info text-dark">Name</th>
-                                <th class="bg-info text-dark">Last Name</th>
-                                <th class="bg-info text-dark">Office</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($evaluations as $evaluation)
-                            @if($evaluation->tool_id==3)
-                                <tr class="data">
-                                    <td style="display:none">{{$evaluation->access_key}}</td>
-                                    <td>{{$evaluation->evaluee->fname}}</td>
-                                    <td>{{$evaluation->evaluee->lname}}</td>
-                                    <td>{{$evaluation->evaluee->office}}</td>
+                            <thead>
+                                <tr>
+                                    <th style="display:none;">Name</th>
+                                    <th class="bg-info text-dark">Name</th>
+                                    <th class="bg-info text-dark">Last Name</th>
+                                    <th class="bg-info text-dark">Office</th>
                                 </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach($evaluations as $evaluation)
+                                @if($evaluation->tool_id==4)
+                                    <tr class="data">
+                                        <td style="display:none">{{$evaluation->access_key}}</td>
+                                        <td>{{$evaluation->evaluee->fname}}</td>
+                                        <td>{{$evaluation->evaluee->lname}}</td>
+                                        <td>{{$evaluation->evaluee->office}}</td>
+                                    </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>         
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 offset-md-2 mt-5 supervisor-container" style="display:none;">
-            <div class="card">
-                <div class="card-body">
-                <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
-                        <thead>
-                            <tr>
-                                <th style="display:none;">Name</th>
-                                <th class="bg-info text-dark">Name</th>
-                                <th class="bg-info text-dark">Last Name</th>
-                                <th class="bg-info text-dark">Office</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($evaluations as $evaluation)
-                            @if($evaluation->tool_id==4)
-                                <tr class="data">
-                                    <td style="display:none">{{$evaluation->access_key}}</td>
-                                    <td>{{$evaluation->evaluee->fname}}</td>
-                                    <td>{{$evaluation->evaluee->lname}}</td>
-                                    <td>{{$evaluation->evaluee->office}}</td>
-                                </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </tfoot>
-                    </table>         
-                </div>
+        <div class="ntp-container" style="display:none;">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h5">Non-Teaching Personnel</h1>
+                
+                <a href="#" id="note-link"><i data-feather="info"></i></a>
             </div>
-        </div>
-        <div class="col-md-8 offset-md-2 mt-5 ntp-container" style="display:none;">
-            <div class="card">
-                <div class="card-body">
-                <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
-                        <thead>
-                            <tr>
-                                <th style="display:none;">Name</th>
-                                <th class="bg-info text-dark">Name</th>
-                                <th class="bg-info text-dark">Last Name</th>
-                                <th class="bg-info text-dark">Office</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($evaluations as $evaluation)
-                            @if($evaluation->tool_id==5)
-                                <tr class="data">
-                                    <td style="display:none">{{$evaluation->access_key}}</td>
-                                    <td>{{$evaluation->evaluee->fname}}</td>
-                                    <td>{{$evaluation->evaluee->lname}}</td>
-                                    <td>{{$evaluation->evaluee->office}}</td>
+            <div class="col-md-10 offset-md-1 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                    <table class="table table-hover table-bordered employeeTable" style="width:100%" id="employeeTable">
+                            <thead>
+                                <tr>
+                                    <th style="display:none;">Name</th>
+                                    <th class="bg-info text-dark">Name</th>
+                                    <th class="bg-info text-dark">Last Name</th>
+                                    <th class="bg-info text-dark">Office</th>
                                 </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach($evaluations as $evaluation)
+                                @if($evaluation->tool_id==5)
+                                    <tr class="data">
+                                        <td style="display:none">{{$evaluation->access_key}}</td>
+                                        <td>{{$evaluation->evaluee->fname}}</td>
+                                        <td>{{$evaluation->evaluee->lname}}</td>
+                                        <td>{{$evaluation->evaluee->office}}</td>
+                                    </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
