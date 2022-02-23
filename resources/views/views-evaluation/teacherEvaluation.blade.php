@@ -60,6 +60,7 @@
                 <th id="sortThName">Last Name</th>
                 <th id="sortThDate">Due Date</th>
                 <th id="sortThCreated">Created On</th>
+                <th id="sortThOffice">Office</th>
             </tr>
         </thead>
         <tbody id="evalList">
@@ -75,6 +76,7 @@
                     <span><a href="{{route('archival', $evaluation->id)}}" onclick="confirmArchival()" class="float-right text-danger archival" style="font-size:1.5em"><b>&times;</b></a></span>
                 </div>
                 <div class="col">
+                    Office: <b>{{$evaluation->evaluee->office}}</b><br>
                     Subject: <b>{{$evaluation->subject}}</b><br>
                     Course: <b>{{$evaluation->course}}</b><br>
                     Due Date: <span class="text-info"><b>{{date('F d, Y', strtotime($evaluation->date))}}</b></span><br>
@@ -106,7 +108,23 @@
             <td style="display:none">{{$evaluation->evaluee['lname']}}</td>
             <td style="display:none">{{$evaluation->date}}</td>
             <td style="display:none">{{$evaluation->created_at}}</td>
+            <td style="display:none">{{$evaluation->evaluee->office}}</td>
+
         </tr>
+        <!-- <div class="card">
+            <div class="card-body">
+                <tr>
+                    <th>NAME</th>
+                    <th>OFFICE</th>
+                    <th>SUBJECT</th>
+                    <th>COURSE</th>
+                    <th>ACCESS KEY</th>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </div>
+        </div> -->
         @endforeach
  
         </tbody>
@@ -122,6 +140,7 @@
                 <li class="list-group-item" ><a href="#" id="sortCreation">Sort by recency of creation</a></li>
                 <li class="list-group-item" ><a href="#" id="sortDate">Sort by nearest due date</a></li>
                 <li class="list-group-item" ><a href="#" id="sortName">Sort by name</a></li>
+                <li class="list-group-item" ><a href="#" id="sortOffice">Sort by office</a></li>
                 <li class="list-group-item" ><a href="{{route('evaluees.index')}}" >View by name</a></li>
           </ul>
         </div>
@@ -170,7 +189,12 @@
                 $('#sortCreation').parent().removeClass('bg-muted');
                 $('#sortDate').parent().removeClass('bg-muted');
             })
-
+            $("#sortOffice").click(function(){
+                $('#sortThOffice').click();
+                $(this).parent().toggleClass('bg-muted');
+                $('#sortCreation').parent().removeClass('bg-muted');
+                $('#sortDate').parent().removeClass('bg-muted');
+            })
         })
 
         function confirmArchival(){

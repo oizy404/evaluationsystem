@@ -130,9 +130,9 @@ Route::group(['middleware' => ['customAuthTeacher']], function () {
 
 
 //================students' page===============//
-// Route::get('/student/access-key/', function(){
-//     return view('views-student.access-key');
-// })->name('access-key');
+Route::get('/student/access-key/', function(){
+    return view('views-student.access-key');
+})->name('access-key');
 Route::get('/access-student-dashboard', [TeacherController::class, 'index'])->name('access-student-dashboard');
 Route::get('student/{key}', [TeacherController::class, 'access'])->name('student-access-key');
 
