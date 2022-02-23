@@ -33,9 +33,6 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li> <a href="{{route('access-student-dashboard')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Student</a></li>
-<<<<<<< HEAD
->>>>>>> 00eb5a05583bcef91f223b6f6c96f2c2d9783c76
-=======
 >>>>>>> 00eb5a05583bcef91f223b6f6c96f2c2d9783c76
           <li><a href="{{route('access-dashboard')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Employee</a></li>
         </ul> -->
