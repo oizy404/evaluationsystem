@@ -89,10 +89,10 @@
         $('#img-facade').click(function(){
             count++;
             console.log(count);
-            if(count == 5){
-                $('.click-more').fadeIn(200).delay(1500).fadeOut(300);
-            }
-            if(count == 10){
+            // if(count == 2){
+            //     $('.click-more').fadeIn(200).delay(1500).fadeOut(300);
+            // }
+            if(count == 2){
                 $('.input-form').show(500);
                 $('.header-facade').hide(400);
                 $('#img-facade').hide(400);

@@ -22,13 +22,20 @@
       <h1 class="mb-4">Performance Evaluation System</h1>
       <div class="front-buttons">
         <a href="#" class="btn btn-warning btn-login font-weight-bold rounded-pill" id="hr-login">Sign In as HR</a>
-        <button class="btn dropdown-toggle m-3 font-weight-bold rounded-pill" style="background: #ffff; width: 30%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <a href="{{route('access-key')}}" class="btn btn-light btn-login font-weight-bold rounded-pill" id="hr-login">Evaluator</a>
+        <!-- <button class="btn dropdown-toggle m-3 font-weight-bold rounded-pill" style="background: #ffff; width: 30%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           Evaluator
+<<<<<<< HEAD
+        </button> -->
+        <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li> <a href="{{route('access-key')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Student</a></li>
+=======
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li> <a href="{{route('access-key')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Student</a></li>
+          <li> <a href="{{route('access-student-dashboard')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Student</a></li>
+>>>>>>> 00eb5a05583bcef91f223b6f6c96f2c2d9783c76
           <li><a href="{{route('access-dashboard')}}" class="btn btn-light btn-login font-weight-bold" id="student-login">Employee</a></li>
-        </ul>
+        </ul> -->
         <!-- {{-- <a href="#" class="btn btn-login font-weight-bold" style="background: #329ef8" id="teacher-login">Sign In as Teacher</a> --}} -->
       </div>
     </div>

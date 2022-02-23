@@ -34,21 +34,37 @@
               <input type="radio" name="session" value="day" required class="ml-4 mr-1">Day
               <input type="radio" name="session" value="evening" required  class="ml-5 mr-1" style="margin-right: 100px">Evening
               
-              <label class="font-weight-bold ml-5">Course:</label>
+              <label class="font-weight-bold ml-5">Course/Section:</label>
               <input type="text" name="course" required  class="form-control ml-3">
           </div>
 
           <div class="form-group form-inline">
               
           </div>
-          <div class="form-group">
+          <div class="form-group" id="year-level">
             <label class="font-weight-bold">Year Level</label>
-            
-            <select id="yrlevel" required  name ="yrlevel" class="form-control col-md-4">
+            <select id="yrlevel" required  name="yrlevel" class="form-control col-md-4">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
+            </select>
+          </div>
+          <div class="form-group" id="grade-level" style="display:none;">
+            <label class="font-weight-bold">Grade Level</label>
+            <select id="gradelevel" required name="yrlevel"  class="form-control col-md-4">
+              <option value="1">Grade 1</option>
+              <option value="2">Grade 2</option>
+              <option value="3">Grade 3</option>
+              <option value="4">Grade 4</option>
+              <option value="5">Grade 5</option>
+              <option value="6">Grade 6</option>
+              <option value="7">Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
+              <option value="12">Grade 12</option>
             </select>
           </div>
           <div class="form-group pt-2">
@@ -57,16 +73,16 @@
               <b>SY To</b> <input type="number" name="SYto" class="form-control yrpicker col-md-3 ml-2">
             </div>
           </div>
-          <div class="form-group pt-2 row">
+          <div class="form-group pt-2 row" id="sem">
             <div class="col">
               <label class="font-weight-bold">Semester</label><br>
-              <input type="radio" name="semester" value="1" required > 1<br>
-              <input type="radio" name="semester" value="2" required > 2<br>
+              <input type="radio" class="sem" name="semester" value="1" required > 1<br>
+              <input type="radio" class="sem" name="semester" value="2" required > 2<br>
             </div>
             <div class="col">
                 <label class="font-weight-bold">Term</label><br>
-                <input type="radio" name="term" value="1" required > 1<br>
-                <input type="radio" name="term" value="2" required > 2<br>
+                <input type="radio" class="sem" name="term" value="1" required > 1<br>
+                <input type="radio" class="sem" name="term" value="2" required > 2<br>
               </div>
           </div>
           <div class="form-group pt-3">
@@ -100,7 +116,7 @@
             </thead>
             <tbody>
                 @foreach ($evaluees as $evaluee)
-                <tr class="rawr">
+                <tr class="evaluee-body">
                     <td style="display: none">{{$evaluee->id}}</td>
                     <td>{{$evaluee->lname}}, {{$evaluee->fname}}</td>
                     <td>{{$evaluee->office}}</td>
@@ -121,7 +137,7 @@
 $(document).ready(function() {
    $('#evalueeTable').dataTable(); 
   });   
-   $('.rawr').click(function(){
+   $('.evaluee-body').click(function(){
       var id =  $(this).find(":first-child").text();
       var name = $(this).find(":first-child").next().text();
       var office=$(this).find(":first-child").next().next().text();
@@ -129,8 +145,20 @@ $(document).ready(function() {
       $('#teacher-input').val(name);
       $('#evaluee_id').val(id);
       if(office=="College"){
+        $('#year-level').attr("name", 'yrlevel');
+        $('#grade-level').attr("name", '');
+        $('.sem').attr( 'required',true);
+        $('#year-level').show();
+        $('#grade-level').hide();
+        $('#sem').show();
         $('#tool_id').val(1);
       }else{
+        $('#year-level').attr("name", '');
+        $('#grade-level').attr("name", 'yrlevel');
+        $('#year-level').hide();
+        $('#grade-level').show();
+        $('.sem').attr( 'required',false);
+        $('#sem').hide();
         $('#tool_id').val(2);
       }
     }); 

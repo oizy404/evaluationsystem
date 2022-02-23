@@ -11,9 +11,9 @@ class EvaluationController extends Controller
     public function index()
     { 
         
-        $evaluations = Evaluation::where('tool_id','=', 1)->orWhere('tool_id','=', 2)->where('archived', 0)->orderBy('id', 'desc')->get();
+        $evaluations = Evaluation::where('tool_id','=', 1)->where('archived','=', 0)->orWhere('tool_id','=', 2)->where('archived','=', 0)->orderBy('id', 'desc')->get();
  
-        //return $evaluations;
+        // return $evaluations;
         return view('views-evaluation.teacherEvaluation', compact("evaluations"));
     
     }
@@ -118,10 +118,16 @@ class EvaluationController extends Controller
             return redirect()->route('evaluations.index');
         }
         else if($evaluation->tool_id == 2){
-            return redirect()->route('adminevaluations.index');
+            return redirect()->route('evaluations.index');
         }
         else if($evaluation->tool_id == 3){
+            return redirect()->route('adminevaluations.index');
+        }
+        else if($evaluation->tool_id == 4){
             return redirect()->route('supervevaluations.index');
+        }
+        else if($evaluation->tool_id == 4){
+            return redirect()->route('ntpevaluations.index');
         }
         
     }
