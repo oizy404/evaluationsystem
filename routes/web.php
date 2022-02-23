@@ -110,6 +110,7 @@ Route::group(['middleware' => 'customAuthAdmin'], function() {
     Route::get('accessNot/{id}/{access}/{origin}', [EvaluationController::class, 'accessNot'])->name('accessNot');
     Route::get('archival/{id}/', [EvaluationController::class, 'archival'])->name('archival');
     Route::get('evaluation/print/{id}/', [EvaluationController::class, 'print'])->name('print');
+    Route::get('evaluation/printevaluation', [EvaluationController::class, 'printevaluation'])->name('printevaluation');
     Route::post('evaluee/{id}/summarize/', [EvalueeController::class, 'summarize'])->name('summarize');
     Route::get('evaluee/{id}/print-summary', [EvalueeController::class, 'printSummary'])->name('printSummary');
 
@@ -130,9 +131,9 @@ Route::group(['middleware' => ['customAuthTeacher']], function () {
 
 
 //================students' page===============//
-// Route::get('/student/access-key/', function(){
-//     return view('views-student.access-key');
-// })->name('access-key');
+Route::get('/student/access-key/', function(){
+    return view('views-student.access-key');
+})->name('access-key');
 Route::get('/access-student-dashboard', [TeacherController::class, 'index'])->name('access-student-dashboard');
 Route::get('student/{key}', [TeacherController::class, 'access'])->name('student-access-key');
 
