@@ -140,7 +140,7 @@ class EvaluationController extends Controller
     public function printevaluation()
     { 
         
-        $evaluations = Evaluation::where('tool_id','=', 1)->where('archived','=', 0)->orWhere('tool_id','=', 2)->where('archived','=', 0)->orderBy('id', 'desc')->get();
+        $evaluations = Evaluation::where('tool_id','=', 1)->where('archived','=', 0)->orWhere('tool_id','=', 2)->where('archived','=', 0)->orderBy('tool_id', 'desc')->get();
  
         // return $evaluations;
         return view('views-evaluation.printpage', compact("evaluations"));

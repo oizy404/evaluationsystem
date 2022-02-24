@@ -51,24 +51,24 @@
 <div class="container">
         <div>
             <div class="border border">
-                <table class="table">
+                <table class="table table-hover table-bordered" id="employeeTable">
                     <thead>
                         <tr>
-                            <th>name</th>
-                            <th>subject</th>
-                            <th>course/section</th>
-                            <th>office</th>
-                            <th>access-key</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+                            <th>Course/Section</th>
+                            <th>Office</th>
+                            <th>Access-Key</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($evaluations as $evaluation)
                         <tr>
-                            <td><b>{{$evaluation->evaluee['lname']}}, {{$evaluation->evaluee['fname']}}</b></td>
-                            <td> <b>{{$evaluation->subject}}</b></td>
-                            <td><b>{{$evaluation->course}}</b></td>
-                            <td><b>{{$evaluation->evaluee['office']}}</b></td>
-                            <td>{{$evaluation->access_key}}</td>
+                            <td>{{$evaluation->evaluee['lname']}}, {{$evaluation->evaluee['fname']}}</td>
+                            <td>{{$evaluation->subject}}</td>
+                            <td>{{$evaluation->course}}</td>
+                            <td>{{$evaluation->evaluee['office']}}</td>
+                            <td><b>{{$evaluation->access_key}}</b></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -80,6 +80,8 @@
 
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
 
 </body>
 </html>

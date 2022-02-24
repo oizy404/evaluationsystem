@@ -12,34 +12,18 @@ class RatingsController extends Controller
 {
     public function access(Request $request){
 
-        try{
-            $evaluation = Evaluation::where('access_key', trim($request->access_key))->get();
-
-            if($evaluation->count()===0 ){
+            try{
+            $evaluation = Evaluation::where('access_key', trim($request->access_key))->first();
+            if($evaluation->status == 0){
                 return redirect()->route('keyNotFound');
             }
-            else{
-                $status;
-                foreach($evaluation as $eval){
-                    $status = $eval->status;
+            else
+                if($evaluation->tool_id==1){
+                    return view('views-student.ratings-page')->with('evaluation', $evaluation);  
                 }
-                if($status === 0)
-                    return redirect()->route('keyNotFound');
-                else
-                    foreach($evaluation as $eval){
-                        if($eval->tool_id==5){
-                            return view('views-ntpEval.ratingsNTP-page', compact('evaluation'));  
-                        }
-                        elseif($eval->tool_id==3){
-                            return view('views-student.ratingsAdmin', compact('evaluation'));  
-                        }
-                        elseif($eval->tool_id==4){
-                            return view('views-student.ratingsSupervisor-page', compact('evaluation'));
-                        }
-                    }
-                    $request->session()->put('key', true);
-                    return view('views-student.ratings-page', compact('evaluation'));
-            }
+                elseif($evaluation->tool_id==2){
+                    return view('views-student.ratings-page')->with('evaluation', $evaluation);  
+                }
         }
         catch(Exception $e){
             return redirect()->route('front');
